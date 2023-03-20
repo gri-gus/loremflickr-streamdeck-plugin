@@ -7,7 +7,7 @@
 
 # loremflickr-streamdeck-plugin
 
-Stream Deck Plugin for installing images from LoremFlickr to keys.
+Stream Deck Plugin for installing images from LoremFlickr to button.
 
 **LoremFlickr official website:** https://loremflickr.com/
 
@@ -77,9 +77,35 @@ Download the Stream Deck app from the official website and install it: https://w
 
 ### LoremFlickr Stream Deck Plugin
 
-Download the latest release: https://github.com/gri-gus/loremflickr-streamdeck-plugin/releases
-
 > ⚠️ During the installation of the plugin, you must have internet access.
+
+> Errors may occur during installation. If they are, then a message about it will appear on the screen.
+
+Latest release: https://github.com/gri-gus/loremflickr-streamdeck-plugin/releases
+
+You need to download a file called `com.ggusev.loremflickr.streamDeckPlugin`. Once downloaded, double-click on it. The
+Stream Deck application prompts you to install the plugin.
+
+After installation, you will have a `LoremFlickr` category and actions:
+
+<img width="295" height="100" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/category.png" alt="category">
+
+## Usage
+
+> ⚠️ The button may not start working immediately after installing the plugin, but after about 20 seconds. At this time,
+> dependencies are installed. If you do not receive an error message on the screen, but an exclamation mark is displayed
+> when you click on the button, then the plugin is not fully installed yet, and you need to wait. This only happens
+> after installing the plugin. There is no need to wait for the next use.
+
+Drag the `Set key image` action from `LoremFlickr` category to the desired button.
+
+Click on the button, and you will see the Property Inspector where you can adjust some settings. See the `Manual`
+section
+in the Property Inspector for more details.
+
+<img width="433" height="200" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/setkeyimage_pi.png" alt="setkeyimage_pi">
+
+Each time you press the button on the Stream Deck, the picture will be updated.
 
 ## Dependencies
 
