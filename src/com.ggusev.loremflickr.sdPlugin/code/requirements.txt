@@ -1,0 +1,10 @@
+certifi==2022.12.7
+charset-normalizer==3.1.0
+decohints==1.0.8
+idna==3.4
+pydantic==1.10.6
+requests==2.28.2
+streamdeck-sdk==0.2.1
+typing_extensions==4.5.0
+urllib3==1.26.15
+websocket-client==1.5.1

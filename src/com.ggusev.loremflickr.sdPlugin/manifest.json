@@ -1,0 +1,45 @@
+{
+  "Actions": [
+    {
+      "UUID": "com.ggusev.loremflickr.setkeyimage",
+      "Icon": "assets/setkeyimage/action_icon",
+      "Name": "Set key image",
+      "States": [
+        {
+          "Image": "assets/setkeyimage/key_icon"
+        }
+      ],
+      "PropertyInspectorPath": "property_inspector/setkeyimage_pi.html",
+      "SupportedInMultiActions": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Tooltip": "Find a picture and set it to key",
+      "UserTitleEnabled": true
+    }
+  ],
+  "Author": "Grigoriy Gusev",
+  "CodePath": "run.sh",
+  "Description": "Get images from LoremFlickr",
+  "Icon": "assets/plugin_icon",
+  "Name": "LoremFlickr",
+  "Version": "1.0.8",
+  "SDKVersion": 2,
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.14"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "6"
+  },
+  "Category": "LoremFlickr",
+  "CategoryIcon": "assets/category_icon",
+  "CodePathMac": "run.sh",
+  "CodePathWin": "run.bat"
+}

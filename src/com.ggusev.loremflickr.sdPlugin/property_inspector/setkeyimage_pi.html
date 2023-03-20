@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Set key image</title>
+    <link rel="stylesheet" href="sdk/css/sdpi.css">
+</head>
+
+<body>
+<div class="sdpi-wrapper">
+    <div class="sdpi-item">
+        <details class="message pointer">
+            <summary>Manual</summary>
+            <p>Category: Enter a word or words separated by commas to search for the image. This field does not accept
+                spaces.</p>
+            <p>Union type: If you have entered more than one word in the "Category" field, then select as the union
+                option.
+                If "and" is selected, images matching all the specified words will be searched. If "or" is selected,
+                images
+                matching at least one of the words will be searched.</p>
+            <p>Grayscale: Check the box if you want the image to be grayscale.</p>
+        </details>
+    </div>
+
+    <div class="sdpi-item">
+        <div class="sdpi-item-label">Category</div>
+        <input class="sdpi-item-value" id="category" value="" placeholder="Category"
+               onchange="onchange_category()" pattern="\S*">
+        <label for="category"></label>
+    </div>
+
+    <div type="radio" class="sdpi-item" id="union_type" onchange="onchange_union_type()">
+        <div class="sdpi-item-label">Union type</div>
+        <div class="sdpi-item-value">
+                        <span class="sdpi-item-child">
+                <input id="union_type_or" type="radio" value="or" name="union_type">
+                <label for="union_type_or" class="sdpi-item-label"><span></span>or</label>
+            </span>
+            <span class="sdpi-item-child">
+                <input id="union_type_and" type="radio" value="and" name="union_type">
+                <label for="union_type_and" class="sdpi-item-label"><span></span>and</label>
+            </span>
+        </div>
+    </div>
+
+    <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Grayscale</div>
+        <input class="sdpi-item-value" id="grayscale_flag" type="checkbox"
+               onchange="onchange_grayscale_flag()">
+        <label for="grayscale_flag"><span></span></label>
+    </div>
+</div>
+
+<script src="sdk/js/constants.js"></script>
+<script src="sdk/js/events.js"></script>
+<script src="sdk/js/api.js"></script>
+<script src="sdk/js/property-inspector.js"></script>
+<script src="sdk/js/dynamic-styles.js"></script>
+<script>
+    console.log('Property Inspector loaded', $PI);
+
+    const category_el = document.getElementById("category")
+    const union_type_and_el = document.getElementById("union_type_and")
+    const union_type_or_el = document.getElementById("union_type_or")
+    const grayscale_flag_el = document.getElementById("grayscale_flag")
+
+    let settings
+
+    $PI.onConnected(jsn => {
+        console.log('Property Inspector connected', jsn);
+        console.log(jsn.actionInfo.payload.settings);
+
+        settings = jsn.actionInfo.payload.settings
+
+        if (settings?.category) {
+            category_el.value = settings.category
+        } else {
+            category_el.value = "kitten"
+            settings["category"] = category_el.value
+        }
+
+        if (settings?.grayscale_flag) {
+            grayscale_flag_el.checked = settings.grayscale_flag
+        } else {
+            grayscale_flag_el.checked = false
+            settings["grayscale_flag"] = grayscale_flag_el.checked
+        }
+
+        if (settings?.union_type === union_type_and_el.value) {
+            union_type_and_el.checked = true
+            union_type_or_el.checked = false
+        } else if (settings?.union_type === union_type_or_el.value) {
+            union_type_and_el.checked = false
+            union_type_or_el.checked = true
+        } else {
+            union_type_and_el.checked = false
+            union_type_or_el.checked = true
+            settings["union_type"] = union_type_or_el.value
+        }
+        $PI.setSettings(settings);
+    });
+
+    const onchange_category = () => {
+        console.log(category_el.value);
+        console.log(category_el.validity.valid)
+        if (category_el.validity.valid && category_el.value) {
+            settings["category"] = category_el.value
+            $PI.setSettings(settings);
+        } else {
+            category_el.value = settings.category
+        }
+    }
+
+    const onchange_grayscale_flag = () => {
+        console.log(grayscale_flag_el.checked);
+        settings["grayscale_flag"] = grayscale_flag_el.checked
+        $PI.setSettings(settings);
+    }
+
+    const onchange_union_type = () => {
+        let union_type_el = null
+        if (union_type_and_el.checked) {
+            union_type_el = union_type_and_el
+        } else if (union_type_or_el.checked) {
+            union_type_el = union_type_or_el
+        }
+        if (union_type_el) {
+            console.log(union_type_el)
+            settings["union_type"] = union_type_el.value
+            $PI.setSettings(settings);
+        }
+    }
+</script>
+</body>
+</html>

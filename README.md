@@ -9,14 +9,18 @@
 
 Stream Deck Plugin for installing images from LoremFlickr to keys.
 
-**Supported operating systems:**
+**LoremFlickr official website:** https://loremflickr.com/
+
+## Requirements
+
+**Operating systems:**
 
 * MacOS: 10.14 or later
 * Windows: 10 or later
 
-**Supported Stream Deck application:** 6.0, 6.1
+**Stream Deck application:** 6.0, 6.1
 
-**Supported Python:** 3.7 or later
+**Python:** 3.7 or later
 
 ## Installation
 
@@ -75,6 +79,10 @@ Download the Stream Deck app from the official website and install it: https://w
 
 Download the latest release: https://github.com/gri-gus/loremflickr-streamdeck-plugin/releases
 
+> ⚠️ During the installation of the plugin, you must have internet access.
+
 ## Dependencies
 
-Made on the basis [streamdeck-python-sdk](https://github.com/gri-gus/streamdeck-python-sdk)
+[streamdeck-python-sdk](https://github.com/gri-gus/streamdeck-python-sdk)
+
+[streamdeck-javascript-sdk](https://github.com/elgatosf/streamdeck-javascript-sdk)
