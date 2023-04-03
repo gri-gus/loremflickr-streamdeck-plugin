@@ -5,6 +5,13 @@
     </a>
 </p>
 
+<p align="center">
+    <a href="https://loremflickr.com/" target="_blank">
+        <img src="https://img.shields.io/website?down_color=FF3E87&down_message=offline&label=LoremFlickr website&up_color=004DDD&up_message=online&url=https%3A%2F%2Floremflickr.com%2F" 
+         alt="LoremFlickr website">
+    </a>
+</p>
+
 # loremflickr-streamdeck-plugin
 
 Stream Deck Plugin for installing images from LoremFlickr to button.
@@ -97,7 +104,7 @@ Click on the button, and you will see the Property Inspector where you can adjus
 section
 in the Property Inspector for more details.
 
-<img width="433" height="200" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/setkeyimage_pi.png" alt="setkeyimage_pi">
+<img width="433" height="230" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/setkeyimage_pi.png" alt="setkeyimage_pi">
 
 Each time you press the button on the Stream Deck, the picture will be updated.
 

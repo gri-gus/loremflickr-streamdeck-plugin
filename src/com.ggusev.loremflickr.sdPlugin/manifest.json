@@ -23,7 +23,7 @@
   "Description": "Get images from LoremFlickr",
   "Icon": "assets/plugin_icon",
   "Name": "LoremFlickr",
-  "Version": "1.0.9",
+  "Version": "1.1.0",
   "SDKVersion": 2,
   "OS": [
     {
@@ -41,5 +41,6 @@
   "Category": "LoremFlickr",
   "CategoryIcon": "assets/category_icon",
   "CodePathMac": "run.sh",
-  "CodePathWin": "run.bat"
+  "CodePathWin": "run.bat",
+  "URL": "https://github.com/gri-gus/loremflickr-streamdeck-plugin"
 }

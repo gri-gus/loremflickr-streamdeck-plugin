@@ -9,6 +9,15 @@
 
 <body>
 <div class="sdpi-wrapper">
+    <div class="sdpi-item" style="max-height: 60px">
+        <div class="sdpi-item-label">Website status</div>
+        <div class="sdpi-item-value"
+             style="background: #3D3D3D; height:26px; max-width: 56px; margin: 0 0 0 5px; padding: 0">
+            <img src="https://img.shields.io/website?down_color=%233d3d3d&down_message=offline&label=&style=flat-square&up_color=%233d3d3d&up_message=online&url=https%3A%2F%2Floremflickr.com%2F"
+                 alt="" style="height: 26px; max-width: 56px; margin: 0">
+        </div>
+    </div>
+
     <div class="sdpi-item">
         <details class="message pointer">
             <summary>Manual</summary>
@@ -33,7 +42,7 @@
     <div type="radio" class="sdpi-item" id="union_type" onchange="onchange_union_type()">
         <div class="sdpi-item-label">Union type</div>
         <div class="sdpi-item-value">
-                        <span class="sdpi-item-child">
+            <span class="sdpi-item-child">
                 <input id="union_type_or" type="radio" value="or" name="union_type">
                 <label for="union_type_or" class="sdpi-item-label"><span></span>or</label>
             </span>
