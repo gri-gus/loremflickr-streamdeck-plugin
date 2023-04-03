@@ -26,17 +26,16 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 
 ### Python
 
+> If you have difficulty, then look at articles or videos on the Internet about it.
+
 1. Download Python from the official website and install it: https://www.python.org/downloads/
 
    > ⚠️ Python version must be 3.7.0 or later.
 
-   > If you have difficulty, then look at articles or videos on the Internet about it.
 
 2. Check that Python is available from the command line:
 
    <details><summary>MacOS</summary>
-
-   > If you don't know how to open the `Terminal` application, then look at articles or videos on the Internet about it.
 
    Open the `Terminal` application, enter the command below and press Return(Enter):
 
@@ -46,15 +45,11 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 
    If you get a response that looks like `Python 3.10.4`, then you have done everything right.
 
-   If there is no response, then you have installed Python incorrectly. Look at articles or videos on the Internet about
-   how to install correctly and try again.
+   If there is no response, then you have installed Python incorrectly.
 
    </details>
 
    <details><summary>Windows</summary>
-
-   > If you don't know how to open the `Command Prompt` application, then look at articles or videos on the Internet
-   about it.
 
    Open the `Command Prompt` application, enter the command below and press Return(Enter):
 
@@ -64,8 +59,7 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 
    If you get a response that looks like `Python 3.10.4`, then you have done everything right.
 
-   If there is no response, then you have installed Python incorrectly. Look at articles or videos on the Internet about
-   how to install correctly and try again.
+   If there is no response, then you have installed Python incorrectly.
 
    </details>
 
