@@ -9,3 +9,4 @@ LOG_FILE_PATH: Path = PLUGIN_LOGS_DIR_PATH / Path(f"{PLUGIN_NAME}.log")
 LOG_LEVEL: int = logging.DEBUG
 
 IMAGE_SIZE = 144
+LOREM_FLICKR_URL = "https://loremflickr.com"
