@@ -28,7 +28,7 @@ BEGIN_S_REGEX = re.compile(r"^\s+|\s+$")
 QUOTES_REGEX = re.compile(r"['\"`]")
 PARSE_REQUIREMENTS_REGEX = re.compile(r"^\s*?(\S*).=", flags=re.MULTILINE)
 
-logger: logging.Logger = logging.getLogger('default')
+logger: logging.Logger = logging.getLogger(__name__)
 MAX_MESSAGE_LEN: int = 500
 LOG_FILE_PATH: Path = PLUGIN_LOGS_DIR_PATH / Path("init.log")
 LOG_LEVEL = logging.DEBUG
