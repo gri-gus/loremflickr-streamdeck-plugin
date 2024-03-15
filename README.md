@@ -108,6 +108,29 @@ in the Property Inspector for more details.
 
 Each time you press the button on the Stream Deck, the picture will be updated.
 
+## How does it work internally?
+
+Stream Deck does not have the ability to run Python files, but it does have the ability to run `.bat` and `.sh` files.
+
+But it all starts with the `manifest.json` file, which contains `"CodePathMac": "run.sh"` and `"CodePathWin": "run.bat"`
+. These are scripts that are run depending on the system.
+
+Files `run.sh` for MacOS or `run.bat` for Windows: startup scripts, entry points. They set environment variables, check
+whether Python is installed (if not, an error window pops up), and run the `init.py` script. Based on the result
+from `init.py`, if everything is fine, then the `main.py` file is launched and the plugin is launched, and if not, then
+an error window pops up. This happens every time you restart the Stream Deck application and when you reinstall/update
+the plugin.
+
+What is the `init.py` file? This is a script that is responsible for the virtual environment and dependencies. Why can't
+we immediately add `venv` to the built version of the plugin? Because a user with a system/hardware different from the
+one on which `venv` was made may encounter compatibility problems. Therefore, for Python, everyone should have their own
+virtual environment for each project. The `init.py` file is responsible for creating the virtual environment, installing
+dependencies from `requirements.txt`, and checking that everything is installed correctly. It also runs every time you
+restart the Stream Deck application and when you reinstall/update the plugin. But if the virtual environment has already
+been created and the dependencies are installed, then `init.py` simply checks that everything is installed correctly.
+
+Later, the `main.py` file comes into play, which contains the plugin logic.
+
 ## Dependencies
 
 [streamdeck-python-sdk](https://github.com/gri-gus/streamdeck-python-sdk)
