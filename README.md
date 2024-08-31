@@ -25,7 +25,7 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 * MacOS: 10.14 or later
 * Windows: 10 or later
 
-**Stream Deck application:** 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6
+**Stream Deck application:** 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7
 
 **Python:** 3.8 or later
 
