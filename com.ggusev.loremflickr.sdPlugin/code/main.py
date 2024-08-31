@@ -3,7 +3,6 @@ from streamdeck_sdk import (
     StreamDeck,
     Action,
     events_received_objs,
-    events_sent_objs,
     image_bytes_to_base64,
     logger,
 )
@@ -59,11 +58,9 @@ class SetKeyImage(Action):
 
         self.set_image(
             context=obj.context,
-            payload=events_sent_objs.SetImagePayload(
-                image=image_base64,
-                target=0,
-                state=obj.payload.state,
-            )
+            image=image_base64,
+            target=0,
+            state=obj.payload.state,
         )
 
 

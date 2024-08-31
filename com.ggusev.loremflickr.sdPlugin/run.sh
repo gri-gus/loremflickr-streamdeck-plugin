@@ -58,3 +58,4 @@ export PYTHONPATH="${PLUGIN_CODE_DIR_PATH}"
 echo $PYTHONPATH
 
 "${PLUGIN_CODE_VENV_PYTHON}" "${PLUGIN_CODE_PATH}" "$@"
+osascript -e "display dialog \"$@\""

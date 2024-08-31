@@ -25,7 +25,7 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 * MacOS: 10.14 or later
 * Windows: 10 or later
 
-**Stream Deck application:** 6.0, 6.1
+**Stream Deck application:** 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6
 
 **Python:** 3.8 or later
 
@@ -93,7 +93,7 @@ After installation, you will have a `LoremFlickr` category and actions:
 
 ## Usage
 
-> ⚠️ The button may not start working immediately after installing the plugin, but after about 20 seconds. At this time,
+> ⚠️ The button may not start working immediately after installing the plugin, but after about 40 seconds. At this time,
 > dependencies are installed. If you do not receive an error message on the screen, but an exclamation mark is displayed
 > when you click on the button, then the plugin is not fully installed yet, and you need to wait. This only happens
 > after installing the plugin. There is no need to wait for the next use.
