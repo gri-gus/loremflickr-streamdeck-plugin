@@ -1,5 +1,6 @@
 import logging
 import os
+import platform
 import re
 import shlex
 import subprocess
@@ -115,16 +116,20 @@ def install_requirements_daemon() -> subprocess.Popen:
 
 
 def pip_freeze_daemon() -> subprocess.Popen:
-    if sys.platform.startswith("win") or sys.platform.startswith("cygwin"):
+    os_name = platform.system()
+    logger.info(os_name)
+    if os_name == "Darwin":
+        command = f'''
+        source "{PLUGIN_CODE_VENV_ACTIVATE}" &&\
+        {PYTHON_COMMAND} -m pip freeze\
+        '''
+    elif os_name == "Windows":
         command = f'''
         "{PLUGIN_CODE_VENV_ACTIVATE}" &&\
         {PYTHON_COMMAND} -m pip freeze\
         '''
     else:
-        command = f'''
-        source "{PLUGIN_CODE_VENV_ACTIVATE}" &&\
-        {PYTHON_COMMAND} -m pip freeze\
-        '''
+        raise InitError("Unsupported Operation System.")
     process = subprocess.Popen(
         clean_up_command(command),
         stdout=subprocess.PIPE,
