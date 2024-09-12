@@ -104,7 +104,7 @@ Click on the button, and you will see the Property Inspector where you can adjus
 section
 in the Property Inspector for more details.
 
-<img width="433" height="230" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/setkeyimage_pi.png" alt="setkeyimage_pi">
+<img width="433" height="260" src="https://raw.githubusercontent.com/gri-gus/loremflickr-streamdeck-plugin/main/assets/images/setkeyimage_pi.png" alt="setkeyimage_pi">
 
 Each time you press the button on the Stream Deck, the picture will be updated.
 
