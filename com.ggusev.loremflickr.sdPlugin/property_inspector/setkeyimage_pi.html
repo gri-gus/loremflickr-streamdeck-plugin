@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8"/>
-    <title>Set key image</title>
-    <link rel="stylesheet" href="sdk/css/sdpi.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>com.ggusev.loremflickr.setkeyimage Property Inspector</title>
+    <link rel="stylesheet" href="streamdeck-javascript-sdk/css/sdpi.css"/>
 </head>
 
 <body>
 <div class="sdpi-wrapper">
-    <div class="sdpi-item" style="max-height: 60px">
+
+        <div class="sdpi-item" style="max-height: 60px">
         <div class="sdpi-item-label">Website status</div>
         <div class="sdpi-item-value"
              style="background: #3D3D3D; height:26px; max-width: 56px; margin: 0 0 0 5px; padding: 0">
@@ -17,129 +22,213 @@
                  alt="" style="height: 26px; max-width: 56px; margin: 0">
         </div>
     </div>
-
-    <div class="sdpi-item">
-        <details class="message pointer">
-            <summary>Manual</summary>
-            <p>Category: Enter a word or words separated by commas to search for the image. This field does not accept
-                spaces.</p>
-            <p>Union type: If you have entered more than one word in the "Category" field, then select as the union
-                option.
-                If "and" is selected, images matching all the specified words will be searched. If "or" is selected,
-                images
-                matching at least one of the words will be searched.</p>
-            <p>Grayscale: Check the box if you want the image to be grayscale.</p>
-        </details>
-    </div>
-
+    <div class="sdpi-heading">SETTINGS</div>
     <div class="sdpi-item">
         <div class="sdpi-item-label">Category</div>
-        <input class="sdpi-item-value" id="category" value="" placeholder="Category"
-               onchange="onchange_category()" pattern="\S*">
-        <label for="category"></label>
+        <input class="sdpi-item-value" id="category" required type="text" onchange="onchange_category()"
+               value="kitten" placeholder="Enter category" pattern="^[a-zA-Z0-9,]{2,}$">
     </div>
-
-    <div type="radio" class="sdpi-item" id="union_type" onchange="onchange_union_type()">
+    <div type="radio" class="sdpi-item">
         <div class="sdpi-item-label">Union type</div>
         <div class="sdpi-item-value">
             <span class="sdpi-item-child">
-                <input id="union_type_or" type="radio" value="or" name="union_type">
-                <label for="union_type_or" class="sdpi-item-label"><span></span>or</label>
+                <input id="union_type_item_0" type="radio" name="union_type"
+                    value="or" checked >
+                <label for="union_type_item_0" class="sdpi-item-label">
+                    <span></span>or
+                </label>
             </span>
             <span class="sdpi-item-child">
-                <input id="union_type_and" type="radio" value="and" name="union_type">
-                <label for="union_type_and" class="sdpi-item-label"><span></span>and</label>
+                <input id="union_type_item_1" type="radio" name="union_type"
+                    value="and"  >
+                <label for="union_type_item_1" class="sdpi-item-label">
+                    <span></span>and
+                </label>
             </span>
         </div>
     </div>
-
     <div type="checkbox" class="sdpi-item">
         <div class="sdpi-item-label">Grayscale</div>
-        <input class="sdpi-item-value" id="grayscale_flag" type="checkbox"
-               onchange="onchange_grayscale_flag()">
-        <label for="grayscale_flag"><span></span></label>
+        <div class="sdpi-item-value">
+            <div class="sdpi-item-child">
+                <input class="sdpi-item-value" id="grayscale_flag" type="checkbox" onchange="onchange_grayscale_flag()" 
+                     >
+                <label for="grayscale_flag" class="sdpi-item-label">
+                    <span></span>
+                </label>
+            </div>
+        </div>
     </div>
+    <div class="sdpi-item details">
+        <div class="sdpi-item-label empty"></div>
+        <details class="sdpi-item-value" >
+            <summary>Manual</summary>
+            <div id="manual_message"><p>Category: Enter a word or words separated by commas to search for the image. This field does not accept spaces.</p>
+<p>Union type: If you have entered more than one word in the "Category" field, then select as the union option.     If "and" is selected, images matching all the specified words will be searched. If "or" is selected,     images matching at least one of the words will be searched.</p>
+<p>Grayscale: Check the box if you want the image to be grayscale.</p></div>
+        </details>
+    </div>
+
 </div>
 
-<script src="sdk/js/constants.js"></script>
-<script src="sdk/js/events.js"></script>
-<script src="sdk/js/api.js"></script>
-<script src="sdk/js/property-inspector.js"></script>
-<script src="sdk/js/dynamic-styles.js"></script>
+<!-- Stream Deck Libs -->
+<script src="streamdeck-javascript-sdk/js/constants.js"></script>
+<script src="streamdeck-javascript-sdk/js/prototypes.js"></script>
+<script src="streamdeck-javascript-sdk/js/timers.js"></script>
+<script src="streamdeck-javascript-sdk/js/utils.js"></script>
+<script src="streamdeck-javascript-sdk/js/events.js"></script>
+<script src="streamdeck-javascript-sdk/js/api.js"></script>
+<script src="streamdeck-javascript-sdk/js/property-inspector.js"></script>
+<script src="streamdeck-javascript-sdk/js/dynamic-styles.js"></script>
 <script>
     console.log('Property Inspector loaded', $PI);
 
-    const category_el = document.getElementById("category")
-    const union_type_and_el = document.getElementById("union_type_and")
-    const union_type_or_el = document.getElementById("union_type_or")
+        const category_el = document.getElementById("category")
     const grayscale_flag_el = document.getElementById("grayscale_flag")
+     const manual_message_el = document.getElementById("manual_message")
 
     let settings
 
     $PI.onConnected(jsn => {
         console.log('Property Inspector connected', jsn);
         console.log(jsn.actionInfo.payload.settings);
+        settings = jsn.actionInfo.payload.settings;
 
-        settings = jsn.actionInfo.payload.settings
-
-        if (settings?.category) {
+                if (settings["category"] !== undefined) {
             category_el.value = settings.category
         } else {
-            category_el.value = "kitten"
             settings["category"] = category_el.value
         }
-
-        if (settings?.grayscale_flag) {
+        let union_type_el;
+        if (settings["union_type"] !== undefined) {
+            union_type_el = document.querySelector(`input[type="radio"][name="union_type"][value="${settings.union_type}"]`)
+            union_type_el.checked = true
+        } else {
+            union_type_el = document.querySelector('input[type="radio"][name="union_type"]:checked')
+            settings["union_type"] = union_type_el.value
+        }
+        if (settings["grayscale_flag"] !== undefined) {
             grayscale_flag_el.checked = settings.grayscale_flag
         } else {
-            grayscale_flag_el.checked = false
             settings["grayscale_flag"] = grayscale_flag_el.checked
         }
+         if (settings["manual_message"] !== undefined) {
+             manual_message_el.innerHTML = settings.manual_message
+                 .split('\n')
+                 .map(line => line.trim())
+                 .filter(line => line)
+                 .map(line => `<p>${line}</p>`)
+                 .join('\n');
+         } else {
+             settings["manual_message"] = manual_message_el.textContent;
+         }
 
-        if (settings?.union_type === union_type_and_el.value) {
-            union_type_and_el.checked = true
-            union_type_or_el.checked = false
-        } else if (settings?.union_type === union_type_or_el.value) {
-            union_type_and_el.checked = false
-            union_type_or_el.checked = true
-        } else {
-            union_type_and_el.checked = false
-            union_type_or_el.checked = true
-            settings["union_type"] = union_type_or_el.value
-        }
         $PI.setSettings(settings);
     });
 
-    const onchange_category = () => {
-        console.log(category_el.value);
-        console.log(category_el.validity.valid)
-        if (category_el.validity.valid && category_el.value) {
-            settings["category"] = category_el.value
-            $PI.setSettings(settings);
-        } else {
-            category_el.value = settings.category
-        }
-    }
+    $PI.onDidReceiveSettings("com.ggusev.loremflickr.setkeyimage", jsn => {
+        settings = jsn.payload.settings
 
+                if (settings["category"] !== undefined) {
+            category_el.value = settings.category
+        } else {
+            settings["category"] = category_el.value
+        }
+        let union_type_el;
+        if (settings["union_type"] !== undefined) {
+            union_type_el = document.querySelector(`input[type="radio"][name="union_type"][value="${settings.union_type}"]`)
+            union_type_el.checked = true
+        } else {
+            union_type_el = document.querySelector('input[type="radio"][name="union_type"]:checked')
+            settings["union_type"] = union_type_el.value
+        }
+        if (settings["grayscale_flag"] !== undefined) {
+            grayscale_flag_el.checked = settings.grayscale_flag
+        } else {
+            settings["grayscale_flag"] = grayscale_flag_el.checked
+        }
+         if (settings["manual_message"] !== undefined) {
+             manual_message_el.innerHTML = settings.manual_message
+                 .split('\n')
+                 .map(line => line.trim())
+                 .filter(line => line)
+                 .map(line => `<p>${line}</p>`)
+                 .join('\n');
+         } else {
+             settings["manual_message"] = manual_message_el.textContent;
+         }
+    });
+
+        const onchange_category = () => {
+        console.log(category_el.value);
+        settings["category"] = category_el.value;
+        $PI.setSettings(settings);
+    }
+    document.addEventListener('input',(e)=>{
+        if(e.target.getAttribute('name')==="union_type") {
+    console.log(e.target.name, e.target.value)
+    settings["union_type"] = e.target.value
+    $PI.setSettings(settings);}
+    })
     const onchange_grayscale_flag = () => {
         console.log(grayscale_flag_el.checked);
         settings["grayscale_flag"] = grayscale_flag_el.checked
         $PI.setSettings(settings);
     }
 
-    const onchange_union_type = () => {
-        let union_type_el = null
-        if (union_type_and_el.checked) {
-            union_type_el = union_type_and_el
-        } else if (union_type_or_el.checked) {
-            union_type_el = union_type_or_el
+    function get_select_values_and_selected(element) {
+        let values = [];
+        for (let i = 0; i < element.options.length; i++) {
+            let option = element.options[i];
+            if (option.value === "null") {
+                continue;
+            }
+            values.push(option.value);
         }
-        if (union_type_el) {
-            console.log(union_type_el)
-            settings["union_type"] = union_type_el.value
-            $PI.setSettings(settings);
+        let selected
+        if (element.value === "null") {
+            selected = null
+        } else {
+            selected = element.value
+        }
+        return {
+            values: values,
+            selected: selected
+        };
+    }
+
+    function update_select_options(element, values, selected_value) {
+        element.innerHTML = '';
+
+        if (selected_value === null) {
+            selected_value = "null";
+        }
+
+        const nullOption = document.createElement('option');
+        nullOption.value = "null";
+        nullOption.text = "";
+        element.appendChild(nullOption);
+
+        values.forEach(value => {
+            if (value === null) {
+                return;
+            }
+            const option = document.createElement('option');
+            option.value = value;
+            option.text = value;
+            element.appendChild(option);
+        });
+
+        if (values.includes(selected_value)) {
+            element.value = selected_value;
+            return true
+        } else {
+            element.value = "null";
+            return false
         }
     }
+
 </script>
 </body>
+
 </html>
