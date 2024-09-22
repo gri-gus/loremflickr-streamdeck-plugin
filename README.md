@@ -135,4 +135,6 @@ Later, the `main.py` file comes into play, which contains the plugin logic.
 
 [streamdeck-python-sdk](https://github.com/gri-gus/streamdeck-python-sdk)
 
+[streamdeck-python-sdk-pi](https://github.com/gri-gus/streamdeck-python-sdk-pi)
+
 [streamdeck-javascript-sdk](https://github.com/elgatosf/streamdeck-javascript-sdk)
