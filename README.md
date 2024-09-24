@@ -18,6 +18,10 @@ Stream Deck Plugin for installing images from LoremFlickr to button.
 
 **LoremFlickr official website:** https://loremflickr.com/
 
+**Property Inspector
+preview:** [click](https://htmlpreview.github.io/?https://github.com/gri-gus/loremflickr-streamdeck-plugin/blob/main/com.ggusev.loremflickr.sdPlugin/property_inspector/setkeyimage_pi.html)
+
+
 ## Requirements
 
 **Operating systems:**
