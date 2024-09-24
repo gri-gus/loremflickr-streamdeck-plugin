@@ -6,7 +6,7 @@ idna==3.8
 pydantic==2.8.2
 pydantic_core==2.20.1
 requests==2.32.3
-streamdeck-sdk==1.2.0
+streamdeck-sdk==1.2.1
 typing_extensions==4.12.2
 urllib3==2.2.2
 websockets==13.0.1
